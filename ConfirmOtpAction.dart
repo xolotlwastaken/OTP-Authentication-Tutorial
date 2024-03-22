@@ -15,13 +15,13 @@ Future<bool> confirmOTP(String token, String email) async {
   // Get a reference your Supabase client
   final supabase = Supabase.instance.client;
 
-  final AuthResponse res = await supabase.auth.verifyOTP(
+  await supabase.auth.verifyOTP(
     type: OtpType.magiclink,
     token: token,
     email: email,
   );
 
-  final Session? session = res.session;
+  final Session? session = supabase.auth.currentSession;
 
   if (session != null) {
     print('Signed In!');
