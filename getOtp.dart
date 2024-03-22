@@ -11,14 +11,13 @@ import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 Future getOtp(String email) async {
-  // Add your function code here!
+// Add your function code here!
 
   // Get a reference your Supabase client
   final supabase = Supabase.instance.client;
 
   await supabase.auth.signInWithOtp(
-      email: email,
-      shouldCreateUser: false,
+    email: email,
+    shouldCreateUser: false,
   );
-  
 }
