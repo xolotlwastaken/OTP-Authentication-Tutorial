@@ -10,26 +10,18 @@ import 'package:flutter/material.dart';
 
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-Future<bool> confirmOTP(String signInMethod, String token, String phoneOrEmail) async {
+Future<bool> confirmOTP(String token, String email) async {
   // Add your function code here!
   // Get a reference your Supabase client
   final supabase = Supabase.instance.client;
-
-  if (signInMethod == "email") {
-    await supabase.auth.verifyOTP(
+  
+  
+  await supabase.auth.verifyOTP(
       type: OtpType.magiclink,
       token: token,
-      email: phoneOrEmail,
-    );
-  }
+      email: email,
+  );
 
-  else if (signInMethod == "phone") {
-    await supabase.auth.verifyOTP(
-      type: OtpType.magiclink,
-      token: token,
-      phone: phoneOrEmail,
-    );
-  }
 
   final Session? session = supabase.auth.currentSession;
 
