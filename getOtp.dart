@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-Future otpSignIn(String email) async {
+Future getOtp(String email) async {
   // Add your function code here!
 
   // Get a reference your Supabase client
