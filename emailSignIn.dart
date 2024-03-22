@@ -10,14 +10,24 @@ import 'package:flutter/material.dart';
 
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-Future otpSignIn(String email) async {
+Future otpSignIn(String signInType, String phoneOrEmail) async {
   // Add your function code here!
 
   // Get a reference your Supabase client
   final supabase = Supabase.instance.client;
 
-  await supabase.auth.signInWithOtp(
-    email: email,
-    shouldCreateUser: false,
-  );
+  if (signInType == 'email') {
+    await supabase.auth.signInWithOtp(
+      email: phoneOrEmail,
+      shouldCreateUser: false,
+    );
+  }
+
+  else if (signInType == 'phone') {
+    await supabase.auth.signInWithOtp(
+      phone: phoneOrEmail,
+      shouldCreateUser: false,
+    );
+  }
+  
 }
