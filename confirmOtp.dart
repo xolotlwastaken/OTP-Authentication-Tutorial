@@ -14,14 +14,12 @@ Future<bool> confirmOtp(String token, String email) async {
   // Add your function code here!
   // Get a reference your Supabase client
   final supabase = Supabase.instance.client;
-  
-  
-  await supabase.auth.verifyOTP(
-      type: OtpType.magiclink,
-      token: token,
-      email: email,
-  );
 
+  await supabase.auth.verifyOTP(
+    type: OtpType.magiclink,
+    token: token,
+    email: email,
+  );
 
   final Session? session = supabase.auth.currentSession;
 
